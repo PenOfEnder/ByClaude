@@ -1,0 +1,24 @@
+{
+  "name": "apizaco-tlaxcala-guia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Guía para comer bonito en Apizaco & Tlaxcala — Mapa interactivo y directorio de restaurantes",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "tlaxcala",
+    "apizaco",
+    "restaurantes",
+    "guia",
+    "mapa",
+    "vercel"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.4.1"
+  }
+}

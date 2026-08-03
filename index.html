@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apizaco &amp; Tlaxcala — Guía para comer bonito</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Karla:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+
+    <style>
+      :root {
+        --cream: #f3ecda;
+        --cream-deep: #e9dec0;
+        --card: #fbf7ec;
+        --ink: #24211c;
+        --ink-soft: #56503f;
+        --maguey: #56683d;
+        --maguey-deep: #3a4a29;
+        --marigold: #d9932e;
+        --marigold-deep: #b87a20;
+        --papel: #bd3a57;
+        --papel-deep: #97253f;
+        --line: rgba(36, 33, 28, 0.14);
+        --shadow: rgba(36, 33, 28, 0.14);
+        --radius: 14px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(
+            ellipse 900px 500px at 85% -5%,
+            rgba(217, 147, 46, 0.16),
+            transparent 60%
+          ),
+          var(--cream);
+        color: var(--ink);
+        font-family: "Karla", sans-serif;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      ::selection {
+        background: var(--marigold);
+        color: var(--ink);
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--maguey);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 22px;
+      }
+
+      /* ---------- SVG signature: maguey ---------- */
+      svg.hidden-defs {
+        position: absolute;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+      }
+
+      .maguey-icon {
+        display: block;
+      }
+      .maguey-icon .leaf-a {
+        fill: var(--maguey);
+      }
+      .maguey-icon .leaf-b {
+        fill: var(--maguey-deep);
+      }
+
+      /* ---------- HERO ---------- */
+      header.hero {
+        padding: 64px 0 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Space Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--maguey-deep);
+        background: var(--card);
+        border: 1.5px dashed var(--maguey);
+        border-radius: 999px;
+        padding: 7px 16px;
+        transform: rotate(-1.4deg);
+        margin-bottom: 26px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 0.9fr;
+        align-items: center;
+        gap: 24px;
+      }
+
+      h1 {
+        font-family: "Fraunces", serif;
+        font-weight: 900;
+        font-size: clamp(40px, 6.2vw, 76px);
+        line-height: 0.98;
+        margin: 0 0 18px;
+        letter-spacing: -0.01em;
+      }
+
+      h1 em {
+        font-style: italic;
+        font-weight: 500;
+        color: var(--maguey-deep);
+      }
+
+      .hero-sub {
+        font-size: 18px;
+        max-width: 52ch;
+        color: var(--ink-soft);
+        margin: 0;
+      }
+
+      .hero-sub em {
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-weight: 600;
+        color: var(--papel-deep);
+      }
+
+      .hero-art {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .hero-art::before {
+        content: "";
+        position: absolute;
+        width: 230px;
+        height: 230px;
+        background: radial-gradient(
+          circle,
+          rgba(217, 147, 46, 0.35),
+          transparent 70%
+        );
+        filter: blur(2px);
+      }
+
+      .hero-art .maguey-icon {
+        width: 170px;
+        height: 170px;
+        position: relative;
+      }
+
+      /* jagged papel-picado divider */
+      .zigzag {
+        height: 26px;
+        background: var(--maguey);
+        clip-path: polygon(
+          0% 0%,
+          100% 0%,
+          100% 100%,
+          95% 40%,
+          90% 100%,
+          85% 40%,
+          80% 100%,
+          75% 40%,
+          70% 100%,
+          65% 40%,
+          60% 100%,
+          55% 40%,
+          50% 100%,
+          45% 40%,
+          40% 100%,
+          35% 40%,
+          30% 100%,
+          25% 40%,
+          20% 100%,
+          15% 40%,
+          10% 100%,
+          5% 40%,
+          0% 100%
+        );
+        margin-top: 34px;
+      }
+
+      /* ---------- FILTERS ---------- */
+      .filters {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: var(--cream);
+        padding: 18px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .filter-btn {
+        font-family: "Space Mono", monospace;
+        font-size: 13px;
+        letter-spacing: 0.02em;
+        border: 1.5px solid var(--ink);
+        background: transparent;
+        color: var(--ink);
+        padding: 9px 16px;
+        border-radius: 999px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition:
+          background 0.15s ease,
+          color 0.15s ease,
+          transform 0.1s ease;
+      }
+      .filter-btn .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--ink);
+      }
+      .filter-btn[data-area="apizaco"] .dot {
+        background: var(--maguey);
+      }
+      .filter-btn[data-area="capital"] .dot {
+        background: var(--marigold);
+      }
+      .filter-btn[data-area="alrededores"] .dot {
+        background: var(--papel);
+      }
+
+      .filter-btn.active {
+        background: var(--ink);
+        color: var(--cream);
+      }
+      .filter-btn.active .dot {
+        background: var(--cream) !important;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .filter-btn:hover {
+          transform: translateY(-1px);
+        }
+      }
+
+      /* ---------- MAP ---------- */
+      section.map-section {
+        padding: 38px 0 10px;
+      }
+
+      .map-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .map-head h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 28px;
+        margin: 0;
+      }
+
+      .legend {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-family: "Space Mono", monospace;
+        font-size: 12px;
+        color: var(--ink-soft);
+      }
+      .legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .legend i {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      #map {
+        width: 100%;
+        height: 460px;
+        border-radius: var(--radius);
+        border: 1px solid var(--line);
+        box-shadow: 0 10px 30px -12px var(--shadow);
+      }
+
+      @media (max-width: 640px) {
+        #map {
+          height: 320px;
+        }
+      }
+
+      .leaflet-popup-content-wrapper {
+        background: var(--card);
+        color: var(--ink);
+        border-radius: 10px;
+        font-family: "Karla", sans-serif;
+      }
+      .leaflet-popup-content {
+        margin: 12px 14px;
+      }
+      .popup-name {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 16px;
+        margin: 0 0 4px;
+      }
+      .popup-blurb {
+        font-size: 13px;
+        color: var(--ink-soft);
+        margin: 0 0 6px;
+      }
+      .popup-rating {
+        font-family: "Space Mono", monospace;
+        font-size: 12px;
+        color: var(--marigold-deep);
+      }
+
+      .pin-dot {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: 3px solid var(--card);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      }
+      .pin-apizaco .pin-dot {
+        background: var(--maguey);
+      }
+      .pin-capital .pin-dot {
+        background: var(--marigold);
+      }
+      .pin-alrededores .pin-dot {
+        background: var(--papel);
+      }
+
+      /* ---------- SECTIONS / CARDS ---------- */
+      .section-block {
+        padding: 46px 0 10px;
+      }
+
+      .section-divider {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 26px;
+      }
+      .section-divider .maguey-icon {
+        width: 30px;
+        height: 30px;
+        flex: none;
+      }
+      .section-divider h2 {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 30px;
+        margin: 0;
+      }
+      .section-divider .count {
+        font-family: "Space Mono", monospace;
+        font-size: 13px;
+        color: var(--ink-soft);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 4px 12px;
+      }
+      .section-divider .rule {
+        flex: 1;
+        height: 1px;
+        background: var(--line);
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      @media (max-width: 760px) {
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .hero-art {
+          display: none;
+        }
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .card:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 14px 28px -16px var(--shadow);
+        }
+      }
+
+      .card-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .card-name {
+        font-family: "Fraunces", serif;
+        font-weight: 700;
+        font-size: 21px;
+        margin: 0 0 4px;
+        line-height: 1.15;
+      }
+
+      .card-cat {
+        font-family: "Space Mono", monospace;
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--ink-soft);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .card-cat i {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .rating-badge {
+        font-family: "Space Mono", monospace;
+        font-size: 12.5px;
+        background: var(--cream-deep);
+        border-radius: 8px;
+        padding: 6px 9px;
+        text-align: right;
+        white-space: nowrap;
+        color: var(--marigold-deep);
+        font-weight: 700;
+      }
+      .rating-badge .reviews {
+        display: block;
+        color: var(--ink-soft);
+        font-weight: 400;
+        font-size: 11px;
+      }
+
+      .card-meta {
+        font-family: "Space Mono", monospace;
+        font-size: 12.5px;
+        color: var(--ink-soft);
+        border-top: 1px dashed var(--line);
+        border-bottom: 1px dashed var(--line);
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .card-meta b {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .card-blurb {
+        font-size: 14.5px;
+        color: var(--ink-soft);
+        margin: 0;
+      }
+
+      .pc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      @media (max-width: 420px) {
+        .pc-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .pc-col h4 {
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin: 0 0 8px;
+      }
+      .pc-col.pros h4 {
+        color: var(--maguey-deep);
+      }
+      .pc-col.cons h4 {
+        color: var(--papel-deep);
+      }
+
+      .pc-col ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .pc-col li {
+        font-size: 13.5px;
+        padding-left: 18px;
+        position: relative;
+        color: var(--ink);
+      }
+      .pc-col.pros li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--maguey);
+        font-weight: 700;
+      }
+      .pc-col.cons li::before {
+        content: "✕";
+        position: absolute;
+        left: 0;
+        color: var(--papel);
+        font-weight: 700;
+        font-size: 11px;
+        top: 2px;
+      }
+
+      .card-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn-map {
+        font-family: "Space Mono", monospace;
+        font-size: 12.5px;
+        background: var(--ink);
+        color: var(--cream);
+        border: none;
+        border-radius: 999px;
+        padding: 9px 16px;
+        cursor: pointer;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .btn-map:hover {
+          background: var(--maguey-deep);
+        }
+      }
+
+      .gmaps-link {
+        font-family: "Space Mono", monospace;
+        font-size: 12px;
+        text-decoration: none;
+        color: var(--ink-soft);
+        border-bottom: 1px dotted var(--ink-soft);
+      }
+      .gmaps-link:hover {
+        color: var(--ink);
+      }
+
+      /* ---------- FOOTER ---------- */
+      footer {
+        margin-top: 60px;
+        padding: 36px 0 60px;
+        border-top: 1px solid var(--line);
+      }
+      footer .foot-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      footer .maguey-icon {
+        width: 26px;
+        height: 26px;
+        flex: none;
+        margin-top: 2px;
+      }
+      footer p {
+        font-size: 13.5px;
+        color: var(--ink-soft);
+        max-width: 70ch;
+        margin: 0 0 8px;
+      }
+      footer .tagline {
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-weight: 600;
+        color: var(--ink);
+        font-size: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- reusable maguey signature icon -->
+    <svg class="hidden-defs" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="maguey-symbol" viewBox="0 0 100 100">
+        <g transform="translate(50,92)">
+          <path
+            class="leaf-b"
+            transform="rotate(-68)"
+            d="M0,0 C-9,-26 -7,-52 0,-78 C7,-52 9,-26 0,0 Z"
+          />
+          <path
+            class="leaf-a"
+            transform="rotate(-48)"
+            d="M0,0 C-8,-32 -6,-60 0,-86 C6,-60 8,-32 0,0 Z"
+          />
+          <path
+            class="leaf-b"
+            transform="rotate(-28)"
+            d="M0,0 C-7,-30 -5,-58 0,-82 C5,-58 7,-30 0,0 Z"
+          />
+          <path
+            class="leaf-a"
+            transform="rotate(-10)"
+            d="M0,0 C-6,-34 -4,-64 0,-90 C4,-64 6,-34 0,0 Z"
+          />
+          <path
+            class="leaf-b"
+            transform="rotate(10)"
+            d="M0,0 C-6,-34 -4,-64 0,-90 C4,-64 6,-34 0,0 Z"
+          />
+          <path
+            class="leaf-a"
+            transform="rotate(28)"
+            d="M0,0 C-5,-30 -7,-58 0,-82 C7,-58 5,-30 0,0 Z"
+          />
+          <path
+            class="leaf-b"
+            transform="rotate(48)"
+            d="M0,0 C-6,-32 -8,-60 0,-86 C8,-60 6,-32 0,0 Z"
+          />
+          <path
+            class="leaf-a"
+            transform="rotate(68)"
+            d="M0,0 C-7,-26 -9,-52 0,-78 C9,-52 7,-26 0,0 Z"
+          />
+          <ellipse class="leaf-b" cx="0" cy="-2" rx="10" ry="7" />
+        </g>
+      </symbol>
+    </svg>
+
+    <div class="wrap">
+      <header class="hero">
+        <span class="eyebrow">Guía · agosto 2026 · 14 lugares</span>
+        <div class="hero-grid">
+          <div>
+            <h1>Apizaco &amp; <em>Tlaxcala</em></h1>
+            <p class="hero-sub">
+              Un mapa para comer <em>bonito</em>: catorce lugares con carácter
+              en Apizaco, la capital y los alrededores — con lo bueno, lo malo,
+              horarios y precio aproximado de cada uno.
+            </p>
+          </div>
+          <div class="hero-art">
+            <svg class="maguey-icon" viewBox="0 0 100 100">
+              <use href="#maguey-symbol" />
+            </svg>
+          </div>
+        </div>
+      </header>
+
+      <div class="zigzag"></div>
+
+      <nav class="filters">
+        <div class="filter-row" id="filterRow">
+          <button class="filter-btn active" data-area="todos">
+            <span class="dot"></span>Todos <span id="count-todos"></span>
+          </button>
+          <button class="filter-btn" data-area="apizaco">
+            <span class="dot"></span>Apizaco <span id="count-apizaco"></span>
+          </button>
+          <button class="filter-btn" data-area="capital">
+            <span class="dot"></span>Tlaxcala Capital
+            <span id="count-capital"></span>
+          </button>
+          <button class="filter-btn" data-area="alrededores">
+            <span class="dot"></span>Alrededores
+            <span id="count-alrededores"></span>
+          </button>
+        </div>
+      </nav>
+
+      <section class="map-section">
+        <div class="map-head">
+          <h2>El mapa</h2>
+          <div class="legend">
+            <span><i style="background: var(--maguey)"></i>Apizaco</span>
+            <span
+              ><i style="background: var(--marigold)"></i>Tlaxcala Capital</span
+            >
+            <span><i style="background: var(--papel)"></i>Alrededores</span>
+          </div>
+        </div>
+        <div
+          id="map"
+          role="region"
+          aria-label="Mapa de restaurantes en Apizaco y Tlaxcala"
+        ></div>
+      </section>
+
+      <div id="sections"></div>
+
+      <footer>
+        <div class="foot-row">
+          <svg class="maguey-icon" viewBox="0 0 100 100">
+            <use href="#maguey-symbol" />
+          </svg>
+          <div>
+            <p>
+              Los horarios, menús y precios cambian con frecuencia — confirma
+              por teléfono o redes sociales antes de ir. Los niveles de precio
+              ($ / $$ / $$$) son estimaciones a partir de reseñas públicas y
+              datos de Google Maps, no tarifas oficiales.
+            </p>
+            <p class="tagline">
+              Hecho para explorar Tlaxcala con hambre y calma.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const PLACES = [
+        {
+          id: "abracadabra",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJhWTxWcQh0IUR3kCXUltEyUY",
+          name: "Abracadabra",
+          area: "apizaco",
+          category: "Café temático",
+          lat: 19.4137486,
+          lng: -98.1375043,
+          rating: 5.0,
+          reviews: 30,
+          price: "$$",
+          address: "C. 2 de Abril 804/407, Centro, Apizaco",
+          hours: "Lun–Dom · 12:00 pm–10:00 pm (aprox.)",
+          blurb:
+            "Rincón mágico con temática Harry Potter, Disney y Los Addams — de lo más fotogénico de la zona.",
+          pros: [
+            "Ambiente inmersivo y muy original",
+            "Buen servicio, no es muy caro",
+            "Viral en TikTok por buena razón",
+          ],
+          cons: [
+            "Pocas reseñas todavía (~30)",
+            "Espacio pequeño, puede saturarse rápido",
+          ],
+        },
+        {
+          id: "evoka",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJ3UaNWSAg0IURF7Sr7wz_gRo",
+          name: "Evoka Restaurante",
+          area: "apizaco",
+          category: "Fine dining",
+          lat: 19.4127778,
+          lng: -98.1358333,
+          rating: 4.6,
+          reviews: 307,
+          price: "$$$",
+          address: "C. 2 de Abril 1022, Centro, Apizaco",
+          hours: "Mar–Sáb 1:30–8/10:00 pm · Dom 1–6 pm · Cerrado lunes",
+          blurb:
+            "El emblema de la cocina tlaxcalteca contemporánea, del chef Francisco Molina.",
+          pros: [
+            'Menú degustación con maridaje, nivel "de capital"',
+            "Ingredientes locales del Mercado Alternativo de Apizaco",
+            "Buena relación calidad-precio para el nivel",
+          ],
+          cons: [
+            "Porciones pequeñas para algunos comensales",
+            "Sin estacionamiento propio",
+            "Horario limitado; a veces cerrado aunque Maps diga abierto",
+          ],
+        },
+        {
+          id: "cielito-lindo",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJx6stupch0IURpTKqthiQi4s",
+          name: "Cielito Lindo Terraza",
+          area: "apizaco",
+          category: "Terraza",
+          lat: 19.4170764,
+          lng: -98.1385718,
+          rating: 4.7,
+          reviews: 50,
+          price: "$$",
+          address: "Av. Hidalgo 403B, Centro, Apizaco",
+          hours: "Lun–Dom · 1:00 pm–12:00 am",
+          blurb: "Terraza céntrica con música en vivo los fines de semana.",
+          pros: ["Buen ambiente y música en vivo", "Precios razonables"],
+          cons: [
+            "A veces falta parte del menú",
+            "Quejas de demora al pedir factura",
+          ],
+        },
+        {
+          id: "galopolis",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJudpt10Mh0IURdqkBty4s5OY",
+          name: "Cafetería Galopolis",
+          area: "apizaco",
+          category: "Café vintage",
+          lat: 19.4154526,
+          lng: -98.1369747,
+          rating: 4.9,
+          reviews: 43,
+          price: "$$",
+          address: "C. 5 de Febrero, Centro, Apizaco",
+          hours: "Cerrado martes · resto 3:00–10/11:00 pm",
+          blurb:
+            "Estilo vintage y clásico — reseñas dicen que se siente como un pequeño museo.",
+          pros: [
+            "Ambiente único y muy cuidado",
+            "Pan de elote casero",
+            "Servicio excelente",
+          ],
+          cons: [
+            "Horario corto, abre hasta las 3 pm",
+            "Cerrado los martes",
+            "Aún pocas reseñas, poco conocido",
+          ],
+        },
+        {
+          id: "haze-hush",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJ0ySFeQAh0IURSNfMvoGBMVA",
+          name: "Haze and Hush",
+          area: "apizaco",
+          category: "Coffee shop",
+          lat: 19.4115667,
+          lng: -98.1361055,
+          rating: 4.9,
+          reviews: 65,
+          price: "$$",
+          address: "Blvd. Francisco I. Madero 1201, Apizaco",
+          hours:
+            "Cerrado lunes · Mar–Jue 7am–7pm · Vie–Sáb 9am–10pm · Dom 10am–6pm",
+          blurb: "Café fotogénico, ideal para una cita o tarde con amigos.",
+          pros: [
+            "Ambiente muy instagrameable",
+            "Chilaquiles los domingos",
+            "Precios razonables",
+          ],
+          cons: ["Cerrado los lunes", "Todavía pocas reseñas (~65)"],
+        },
+        {
+          id: "intimo",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJL-AzgHQh0IURzidzo164yg4",
+          name: "Íntimo — Cafetería de Especialidad",
+          area: "apizaco",
+          category: "Café de especialidad",
+          lat: 19.4067332,
+          lng: -98.1438549,
+          rating: 4.6,
+          reviews: 262,
+          price: "$$",
+          address: "Av. Hidalgo 2104, Fátima, Apizaco",
+          hours: "Lun–Sáb 9:00 am–9:30 pm · Cerrado domingo",
+          blurb:
+            "Café de especialidad entre plantas, buena opción para desayuno o brunch.",
+          pros: [
+            "Mucha vegetación, ambiente cuidado",
+            "Café de olla de cortesía con el desayuno",
+          ],
+          cons: [
+            "Reseña reciente critica el sabor del café",
+            "Se llena de grupos grandes en la mañana",
+          ],
+        },
+        {
+          id: "orale-cafe",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJOwd8j_ch0IURbD97gnzTT-Q",
+          name: "¡Órale! un café",
+          area: "apizaco",
+          category: "Cafetería rodante",
+          lat: 19.4166012,
+          lng: -98.1390471,
+          rating: 4.5,
+          reviews: 26,
+          price: "$$",
+          address: "Av. Hidalgo 214C, Centro, Apizaco",
+          hours: "Cerrado jueves · resto 7:30 am–9:30 pm",
+          blurb:
+            "Cafetería dentro de una van VW convertida — concepto muy original.",
+          pros: [
+            "Concepto original y fotogénico",
+            "Café rico, personal amable",
+          ],
+          cons: [
+            "Precios un poco altos para ser café",
+            "Alguna reseña dice que la calidad bajó",
+          ],
+        },
+        {
+          id: "magueyes",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJf6Tcyz7Zz4UR4b_DNnn9mDQ",
+          name: "Casa de los Magueyes",
+          area: "capital",
+          category: "Cocina tradicional",
+          lat: 19.315144,
+          lng: -98.2379324,
+          rating: 4.4,
+          reviews: 1452,
+          price: "$$",
+          address: "Pl. Xicohténcatl 7, Centro, Tlaxcala",
+          hours:
+            "Cerrado lunes · Mar–Jue 11am–10pm · Vie–Sáb 11am–1am · Dom 11am–8pm",
+          blurb:
+            "Cocina tlaxcalteca tradicional con degustación de pulques, en pleno centro histórico.",
+          pros: [
+            "Interior hermoso (la puerta del baño es original)",
+            "Una de las mejores terrazas exteriores del centro",
+            "Buen tasting de 5 pulques",
+          ],
+          cons: [
+            "Se satura por ser muy popular (1,452 reseñas)",
+            "Puede haber espera en horas pico",
+          ],
+        },
+        {
+          id: "vinos-piedra",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJhxnwnj7Zz4UREssEnbAfkpw",
+          name: "Vinos y Piedra",
+          area: "capital",
+          category: "Rooftop bar",
+          lat: 19.3167514,
+          lng: -98.2393337,
+          rating: 4.4,
+          reviews: 1422,
+          price: "$$",
+          address: "Plaza de la Constitución 19, Centro, Tlaxcala",
+          hours: "Lun–Sáb 8am–12am · Dom 9am–11pm",
+          blurb:
+            "Rooftop con vista a la plaza principal y la parroquia — arquitectura preciosa.",
+          pros: [
+            "Vista espectacular desde la azotea",
+            "Arquitectura del edificio muy bonita",
+            "Buena opción para brunch",
+          ],
+          cons: [
+            "Servicio lento (hay que subir escaleras)",
+            'Reseñas dicen que es "más para selfies que para comer bien"',
+            "No siempre hay carta de vinos pese al nombre",
+          ],
+        },
+        {
+          id: "casa17",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJeyhGDOXZz4UR688hOy3H0-M",
+          name: "Casa 17 Restaurante",
+          area: "capital",
+          category: "Cocina mexicana",
+          lat: 19.3165647,
+          lng: -98.2390219,
+          rating: 4.7,
+          reviews: 70,
+          price: "$$",
+          address: "Plaza de la Constitución 17, Centro, Tlaxcala",
+          hours: "Lun–Dom 2:00–10:30 pm",
+          blurb: "Cocina mexicana refinada justo frente a la plaza principal.",
+          pros: [
+            "Mole verde y pipián muy recomendados",
+            "Ambiente elegante",
+            "Salsa de molcajete preparada en mesa",
+          ],
+          cons: [
+            "Servicio lento si hay poco personal (hasta 45 min de espera)",
+            "A veces desbalance entre relleno y mole",
+          ],
+        },
+        {
+          id: "vintage-coffee",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJS-R6GSzZz4UR9dPWHDxDqQs",
+          name: "Vintage Coffee & Bar",
+          area: "capital",
+          category: "Café / brunch",
+          lat: 19.3281746,
+          lng: -98.2262741,
+          rating: 4.3,
+          reviews: 1050,
+          price: "$$",
+          address: "Blvd. Guillermo Valle 90, Centro, Tlaxcala",
+          hours: "Lun–Jue 8am–11pm · Vie–Sáb 8/9am–12am · Dom 9am–11pm",
+          blurb:
+            "Brunch acogedor de aire vintage, buen punto de descanso en el centro.",
+          pros: [
+            "Ciabattas enormes",
+            "Ambiente muy acogedor",
+            "Buen servicio con recomendaciones",
+          ],
+          cons: [
+            'Comida "no es la mejor" según alguna reseña (el ambiente compensa)',
+          ],
+        },
+        {
+          id: "caballerizas",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJs_L90z_Zz4URUOh2oVxX87w",
+          name: "Las Caballerizas",
+          area: "alrededores",
+          category: "Rancho / cortes",
+          lat: 19.382143,
+          lng: -98.1768112,
+          rating: 4.2,
+          reviews: 491,
+          price: "$$",
+          address: "Sta. María Atlihuetzia, San Dionisio Yauhquemehcan",
+          hours: "Lun–Dom 8:30am–9/10pm",
+          blurb:
+            "Restaurante dentro de un rancho de caballos, cortes estilo Jalisco.",
+          pros: [
+            "Lugar hermoso, banquitos hechos de monturas",
+            "Buena comida y variedad",
+          ],
+          cons: [
+            "Varias reseñas recientes de servicio muy lento (hasta 2h de espera)",
+            "Falta de organización mencionada seguido",
+          ],
+        },
+        {
+          id: "7puertas",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJF406dgDfz4URbErH5ZlRWh0",
+          name: "7 Puertas",
+          area: "alrededores",
+          category: "Paellas y parrilla",
+          lat: 19.3668701,
+          lng: -98.1797891,
+          rating: 4.7,
+          reviews: 47,
+          price: "$$",
+          address: "Acxotecatl 30, Amaxac de Guerrero",
+          hours: "Solo Vie–Dom · 1:00–7:30 pm",
+          blurb:
+            "Paella valenciana y parrilla en un ambiente rústico, solo fines de semana.",
+          pros: [
+            "Paella muy bien calificada",
+            "Ambiente rústico único",
+            "Área de niños",
+          ],
+          cons: [
+            "Menú pequeño",
+            "Solo abre 3 días a la semana",
+            "Muy ventilado, lleva abrigo si hace frío",
+          ],
+        },
+        {
+          id: "tikytos",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJq_9hQZ3fz4URQC8G9HcUpEk",
+          name: "Los Tikytos",
+          area: "alrededores",
+          category: "Desayunos",
+          lat: 19.3715881,
+          lng: -98.1765317,
+          rating: 4.8,
+          reviews: 156,
+          price: "$",
+          address: "Calle Acxotecatl #4, Sta. María Atlihuetzian",
+          hours: "Jue–Dom 9am–9pm · Cerrado Lun–Mié",
+          blurb:
+            "Desayunos tradicionales con el dueño más carismático de la zona.",
+          pros: [
+            "De los mejor calificados de Tlaxcala (4.8)",
+            "Pet-friendly",
+            "Ambiente familiar auténtico, Don Juan Manuel siempre presente",
+          ],
+          cons: [
+            "Precios subiendo un poco (mencionado en reseñas)",
+            "Solo abre jueves a domingo",
+          ],
+        },
+      ];
+
+      const AREA_LABEL = {
+        apizaco: "Apizaco",
+        capital: "Tlaxcala Capital",
+        alrededores: "Alrededores",
+      };
+
+      // ---- counts on filter buttons ----
+      document.getElementById("count-todos").textContent =
+        "(" + PLACES.length + ")";
+      ["apizaco", "capital", "alrededores"].forEach((a) => {
+        document.getElementById("count-" + a).textContent =
+          "(" + PLACES.filter((p) => p.area === a).length + ")";
+      });
+
+      // ---- map init ----
+      const map = L.map("map", { scrollWheelZoom: false });
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+        {
+          attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
+          subdomains: "abcd",
+          maxZoom: 19,
+        },
+      ).addTo(map);
+
+      const markers = {};
+      PLACES.forEach((p) => {
+        const icon = L.divIcon({
+          className: "pin pin-" + p.area,
+          html: '<span class="pin-dot"></span>',
+          iconSize: [20, 20],
+          iconAnchor: [10, 10],
+          popupAnchor: [0, -12],
+        });
+        const m = L.marker([p.lat, p.lng], { icon }).addTo(map);
+        m.bindPopup(
+          '<p class="popup-name">' +
+            p.name +
+            "</p>" +
+            '<p class="popup-blurb">' +
+            p.blurb +
+            "</p>" +
+            '<p class="popup-rating">★ ' +
+            p.rating.toFixed(1) +
+            " · " +
+            p.reviews +
+            " reseñas · " +
+            p.price +
+            "</p>",
+        );
+        markers[p.id] = m;
+      });
+
+      function fitVisible(filter) {
+        const visible = PLACES.filter(
+          (p) => filter === "todos" || p.area === filter,
+        );
+        if (!visible.length) return;
+        const bounds = L.latLngBounds(visible.map((p) => [p.lat, p.lng]));
+        map.fitBounds(bounds, { padding: [36, 36] });
+      }
+      fitVisible("todos");
+
+      function updateMarkers(filter) {
+        PLACES.forEach((p) => {
+          const show = filter === "todos" || p.area === filter;
+          const m = markers[p.id];
+          if (show && !map.hasLayer(m)) m.addTo(map);
+          if (!show && map.hasLayer(m)) map.removeLayer(m);
+        });
+        fitVisible(filter);
+      }
+
+      window.goToPlace = function (id) {
+        const p = PLACES.find((x) => x.id === id);
+        const m = markers[id];
+        if (!map.hasLayer(m)) m.addTo(map);
+        map.flyTo([p.lat, p.lng], 16, { duration: 0.8 });
+        m.openPopup();
+        document
+          .getElementById("map")
+          .scrollIntoView({ behavior: "smooth", block: "center" });
+      };
+
+      // ---- cards ----
+      function cardHTML(p) {
+        return `
+    <article class="card">
+      <div class="card-top">
+        <div>
+          <h3 class="card-name">${p.name}</h3>
+          <span class="card-cat"><i style="background:var(${p.area === "apizaco" ? "--maguey" : p.area === "capital" ? "--marigold" : "--papel"})"></i>${p.category}</span>
+        </div>
+        <div class="rating-badge">★ ${p.rating.toFixed(1)} · ${p.price}<span class="reviews">${p.reviews} reseñas</span></div>
+      </div>
+      <p class="card-blurb">${p.blurb}</p>
+      <div class="card-meta">
+        <span><b>Dónde:</b> ${p.address}</span>
+        <span><b>Horario:</b> ${p.hours}</span>
+      </div>
+      <div class="pc-grid">
+        <div class="pc-col pros">
+          <h4>A favor</h4>
+          <ul>${p.pros.map((x) => "<li>" + x + "</li>").join("")}</ul>
+        </div>
+        <div class="pc-col cons">
+          <h4>Hay que saber</h4>
+          <ul>${p.cons.map((x) => "<li>" + x + "</li>").join("")}</ul>
+        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn-map" onclick="goToPlace('${p.id}')">Ver en el mapa</button>
+        <a class="gmaps-link" target="_blank" rel="noopener" href="${p.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`}">Abrir en Google Maps ↗</a>
+      </div>
+    </article>`;
+      }
+
+      function renderCards(filter) {
+        const root = document.getElementById("sections");
+        root.innerHTML = "";
+        ["apizaco", "capital", "alrededores"].forEach((area) => {
+          if (filter !== "todos" && filter !== area) return;
+          const items = PLACES.filter((p) => p.area === area);
+          if (!items.length) return;
+          const section = document.createElement("section");
+          section.className = "section-block";
+          section.innerHTML = `
+        <div class="section-divider">
+          <svg class="maguey-icon" viewBox="0 0 100 100"><use href="#maguey-symbol"/></svg>
+          <h2>${AREA_LABEL[area]}</h2>
+          <span class="count">${items.length} lugares</span>
+          <span class="rule"></span>
+        </div>
+        <div class="card-grid">${items.map(cardHTML).join("")}</div>
+      `;
+          root.appendChild(section);
+        });
+      }
+      renderCards("todos");
+
+      // ---- filter interactions ----
+      document.getElementById("filterRow").addEventListener("click", (e) => {
+        const btn = e.target.closest(".filter-btn");
+        if (!btn) return;
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.area;
+        updateMarkers(filter);
+        renderCards(filter);
+      });
+    </script>
+  </body>
+</html>
