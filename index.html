@@ -2431,6 +2431,22 @@
         },
       ).addTo(map);
 
+      function getUniversalMapsUrl(p) {
+        let placeId = null;
+        if (p.mapsUrl) {
+          const match = p.mapsUrl.match(/place_id:([^&]+)/);
+          if (match) placeId = match[1];
+        }
+        const queryText = encodeURIComponent(p.name + " " + (p.address || p.area || "Tlaxcala"));
+        if (placeId) {
+          return `https://www.google.com/maps/search/?api=1&query=${queryText}&query_place_id=${placeId}`;
+        }
+        if (p.mapsUrl && p.mapsUrl.startsWith("http")) {
+          return p.mapsUrl;
+        }
+        return `https://www.google.com/maps/search/?api=1&query=${queryText}`;
+      }
+
       const markers = {};
       PLACES.forEach((p) => {
         const icon = L.divIcon({
@@ -2462,7 +2478,7 @@
             " reseñas · " +
             p.price +
             "</p>" +
-            `<p style="margin-top:8px;margin-bottom:0;"><a href="${p.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`}" target="_blank" rel="noopener" style="color:#d9932e;font-weight:700;text-decoration:none;font-size:12px;">Abrir en Google Maps ↗</a></p>`,
+            `<p style="margin-top:8px;margin-bottom:0;"><a href="${getUniversalMapsUrl(p)}" target="_blank" rel="noopener" style="color:#d9932e;font-weight:700;text-decoration:none;font-size:12px;">Abrir en Google Maps ↗</a></p>`,
         );
         markers[p.id] = m;
       });
@@ -2542,7 +2558,7 @@
       </div>
       <div class="card-actions">
         <button class="btn-map" onclick="goToPlace('${p.id}')">Ver en el mapa</button>
-        <a class="gmaps-link" target="_blank" rel="noopener" href="${p.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`}">Abrir en Google Maps ↗</a>
+        <a class="gmaps-link" target="_blank" rel="noopener" href="${getUniversalMapsUrl(p)}">Abrir en Google Maps ↗</a>
       </div>
     </article>`;
       }
