@@ -779,7 +779,7 @@
             <p class="hero-sub">
               Un mapa para comer <em>bonito</em>: diecinueve lugares con carácter
               en Apizaco, la capital y los alrededores — con lo bueno, lo malo,
-              horarios, precios y la <b>⭐ Selección de Bryanjs</b>.
+              horarios, precios y la <b>⭐ Recomendado </b>.
             </p>
           </div>
           <div class="hero-art">
@@ -798,7 +798,7 @@
             <span class="dot"></span>Todos <span id="count-todos"></span>
           </button>
           <button class="filter-btn bryanjs-filter-btn" data-area="bryanjs">
-            <span class="dot" style="background:#d9932e;"></span>⭐ Selección de Bryanjs <span id="count-bryanjs"></span>
+            <span class="dot" style="background:#d9932e;"></span>⭐ Recomendado  <span id="count-bryanjs"></span>
           </button>
           <button class="filter-btn" data-area="apizaco">
             <span class="dot"></span>Apizaco <span id="count-apizaco"></span>
@@ -823,7 +823,7 @@
               ><i style="background: var(--marigold)"></i>Tlaxcala Capital</span
             >
             <span><i style="background: var(--papel)"></i>Alrededores</span>
-            <span><i style="background: #d9932e; border-radius: 2px;"></i>⭐ Selección de Bryanjs</span>
+            <span><i style="background: #d9932e; border-radius: 2px;"></i>⭐ Recomendado </span>
           </div>
         </div>
         <div
@@ -1445,7 +1445,7 @@
             ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px;" />`
             : "") +
             (p.bryanjsChoice
-              ? '<div style="color:#b87a20;font-weight:700;font-size:11.5px;margin-bottom:5px;">⭐ Selección de Bryanjs</div>'
+              ? '<div style="color:#b87a20;font-weight:700;font-size:11.5px;margin-bottom:5px;">⭐ Recomendado </div>'
               : "") +
             '<p class="popup-name">' +
             p.name +
@@ -1504,7 +1504,7 @@
       function cardHTML(p) {
         const isBryan = p.bryanjsChoice ? "bryanjs-choice" : "";
         const badgeHTML = p.bryanjsChoice
-          ? `<div class="bryanjs-badge" title="Destacado en la selección especial">⭐ Selección de Bryanjs</div>`
+          ? `<div class="bryanjs-badge" title="Destacado en la selección especial">⭐ Recomendado </div>`
           : "";
         return `
     <article class="card ${isBryan}">
@@ -1556,7 +1556,7 @@
           section.innerHTML = `
         <div class="section-divider">
           <svg class="maguey-icon" viewBox="0 0 100 100"><use href="#maguey-symbol"/></svg>
-          <h2>${filter === "bryanjs" ? AREA_LABEL[area] + " — ⭐ Selección de Bryanjs" : AREA_LABEL[area]}</h2>
+          <h2>${filter === "bryanjs" ? AREA_LABEL[area] + " — ⭐ Recomendado " : AREA_LABEL[area]}</h2>
           <span class="count">${items.length} lugares</span>
           <span class="rule"></span>
         </div>
