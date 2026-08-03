@@ -378,6 +378,10 @@
       .pin-alrededores .pin-dot {
         background: var(--papel);
       }
+      .pin-group .pin-dot {
+        background: #e65c00 !important;
+        border-color: #2b2d42 !important;
+      }
 
       /* ---------- SECTIONS / CARDS ---------- */
       .section-block {
@@ -914,13 +918,13 @@
 
     <div class="wrap">
       <header class="hero">
-        <span class="eyebrow">Guía · agosto 2026 · 19 lugares</span>
+        <span class="eyebrow">Guía · agosto 2026 · 39 lugares curados</span>
         <div class="hero-grid">
           <div>
             <h1>Apizaco &amp; <em>Tlaxcala</em></h1>
             <p class="hero-sub">
-              Un mapa para comer <em>bonito</em>: diecinueve lugares con carácter
-              en Apizaco, la capital y los alrededores — con lo bueno, lo malo,
+              Un mapa para comer <em>bonito</em>: 19 lugares principales
+              en Apizaco, la capital y alrededores, más <b>20 especialidades por categoría</b> — con lo bueno, lo malo,
               horarios, precios y la <b>⭐ Recomendado </b>.
             </p>
           </div>
@@ -953,6 +957,26 @@
             <span class="dot"></span>Alrededores
             <span id="count-alrededores"></span>
           </button>
+        </div>
+        <div style="margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 12px;">
+          <span style="font-family: 'Space Mono', monospace; font-size: 11px; text-transform: uppercase; color: var(--ink-soft); display: block; margin-bottom: 8px; letter-spacing: 0.04em;">Especialidades por categoría (sólo visibles al seleccionar):</span>
+          <div class="filter-row" id="groupRow">
+            <button class="filter-btn group-btn" data-group="🌮 Taquerías y Antojitos">
+              <span class="dot" style="background:#e65c00;"></span>🌮 Taquerías <span id="count-taquerias"></span>
+            </button>
+            <button class="filter-btn group-btn" data-group="🐟 Mariscos y Cocina de Mar">
+              <span class="dot" style="background:#0077b6;"></span>🐟 Mariscos <span id="count-mariscos"></span>
+            </button>
+            <button class="filter-btn group-btn" data-group="🍱 Sushi y Comida Asiática">
+              <span class="dot" style="background:#d90429;"></span>🍱 Sushi &amp; Asiática <span id="count-sushi"></span>
+            </button>
+            <button class="filter-btn group-btn" data-group="🥩 Cortes de Carne y Parrilla">
+              <span class="dot" style="background:#6a040f;"></span>🥩 Parrilla &amp; Cortes <span id="count-parrilla"></span>
+            </button>
+            <button class="filter-btn group-btn" data-group="🍳 Desayunos & Comida Casera Tradicional">
+              <span class="dot" style="background:#e09f3e;"></span>🍳 Desayunos &amp; Tradicional <span id="count-desayunos"></span>
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -1542,6 +1566,546 @@
             "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80",
           bryanjsChoice: false,
         },
+        {
+          id: "los-panchitos",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJrzt9NBog0IURnUrWxRvsoNQ",
+          name: "Taquería Los Panchitos",
+          area: "apizaco",
+          group: "🌮 Taquerías y Antojitos",
+          category: "Taquería / Antojitos",
+          lat: 19.4215,
+          lng: -98.136,
+          rating: 4.5,
+          reviews: 956,
+          price: "$",
+          address: "Av Jacarandas 3, Loma Florida I, Apizaco",
+          hours: "Lun–Dom 6pm–1am",
+          blurb: "Taquería clásica y muy popular en Apizaco conocida por sus porciones generosas de pastor, bistec y pozole casero.",
+          pros: [
+            "Porciones abundantes y buena sazón",
+            "Excelente relación calidad-precio",
+            "Atención rápida",
+          ],
+          cons: [
+            "Lugar sencillo sin lujos",
+            "Suele haber gente en horas pico de cena",
+          ],
+          image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "matambre",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJJ2WFjCwh0IURlo9fsDVQlaI",
+          name: "MATAMBRE Tacos de Asada",
+          area: "apizaco",
+          group: "🌮 Taquerías y Antojitos",
+          category: "Tacos de Asada & Parrilla",
+          lat: 19.418,
+          lng: -98.129,
+          rating: 4.5,
+          reviews: 158,
+          price: "$",
+          address: "Av Ignacio Zaragoza S/N, San Rafael Atlixtac, Apizaco",
+          hours: "Mar–Dom 5pm–11:30pm",
+          blurb: "Punto imperdible para tacos de asada, choripanes, tuétanos y quesos asados al carbón.",
+          pros: [
+            "Variedad de cortes, choripanes y esquites con tuétano",
+            "Ambiente juvenil y casual",
+            "Buena atención",
+          ],
+          cons: [
+            "Suele requerir paciencia o llegar temprano",
+            "Pago únicamente en efectivo",
+          ],
+          image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "los-magueyes-apizaco",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJmR72wiIg0IURzEgcm1s3SjA",
+          name: "Taquería Los Magueyes Apizaco",
+          area: "apizaco",
+          group: "🌮 Taquerías y Antojitos",
+          category: "Taquería Tradicional",
+          lat: 19.415,
+          lng: -98.1405,
+          rating: 4.3,
+          reviews: 1201,
+          price: "$",
+          address: "C. Francisco Sarabia 107, Centro, Apizaco",
+          hours: "Lun–Dom 2pm–12am",
+          blurb: "Taquería tradicional con más de 20 años ofreciendo tacos al pastor y carne a la parrilla.",
+          pros: [
+            "Sabor tradicional al pastor muy reconocido",
+            "Instalaciones amplias y limpias",
+            "Ideal para ir en familia",
+          ],
+          cons: [
+            "Estacionamiento algo difícil en el centro",
+            "El servicio puede demorarse cuando está lleno",
+          ],
+          image: "https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "el-taco-tote",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJLSzefpMf0IURGd9LfdS3IkU",
+          name: "EL TACO-TOTE",
+          area: "apizaco",
+          group: "🌮 Taquerías y Antojitos",
+          category: "Taquería & Cervecería",
+          lat: 19.423,
+          lng: -98.1425,
+          rating: 4.4,
+          reviews: 394,
+          price: "$$",
+          address: "Blvd. 16 de Septiembre, San Isidro, Apizaco",
+          hours: "Mié–Lun 2pm–11pm",
+          blurb: "Taquería familiar con tacos gigantes, volcanes, alambres y selección de cervezas.",
+          pros: [
+            "Estacionamiento amplio y propio",
+            "Terraza exterior agradable",
+            "Acepta tarjetas de crédito/débito",
+          ],
+          cons: [
+            "Precios un poco más elevados que una taquería tradicional",
+            "Ruido moderado en fines de semana",
+          ],
+          image: "https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "la-lechucita",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJQ6uZ6yIg0IURrZM_qVbUbxk",
+          name: "Taquería La Lechucita",
+          area: "apizaco",
+          group: "🌮 Taquerías y Antojitos",
+          category: "Taquería Tradicional",
+          lat: 19.4255,
+          lng: -98.145,
+          rating: 4.2,
+          reviews: 854,
+          price: "$",
+          address: "Calle La Noria 11, Loma Paraíso, Apizaco",
+          hours: "Lun–Sáb 7pm–12am",
+          blurb: "Fundada en 1991, famosa por sus tacos al pastor, sopas, caldos y quesadillas.",
+          pros: [
+            "Tradición de más de 30 años en Apizaco",
+            "Variedad de sopas y caldos calientes",
+            "Precios muy accesibles",
+          ],
+          cons: [
+            "Horarios de apertura en ocasiones inconsistentes",
+            "Solo pago en efectivo",
+          ],
+          image: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "los-tarascos",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJkwMfQzsg0IURcch3QwCuttM",
+          name: "Tacos Los Tarascos | Apizaco",
+          area: "apizaco",
+          group: "🌮 Taquerías y Antojitos",
+          category: "Taquería / Especialidades",
+          lat: 19.4162,
+          lng: -98.1418,
+          rating: 4.2,
+          reviews: 1457,
+          price: "$$",
+          address: "Blvd. Francisco I. Madero 909, Centro, Apizaco",
+          hours: "Lun–Dom 1pm–12am",
+          blurb: "Sucursal de la conocida franquicia con sazón al pastor constante, gringas y tacos árabes.",
+          pros: [
+            "Mismo sazón y salsas reconocidas de la marca",
+            "Servicio a domicilio disponible",
+            "Instalaciones cómodas",
+          ],
+          cons: [
+            "Estacionamiento complicado en la zona",
+            "El servicio puede volverse lento en horas pico",
+          ],
+          image: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "los-arrecifes",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJ0WBtVSAg0IURfJWo_PB2AUw",
+          name: "Los Arrecifes Restaurante Bar",
+          area: "apizaco",
+          group: "🐟 Mariscos y Cocina de Mar",
+          category: "Mariscos & Bar",
+          lat: 19.4145,
+          lng: -98.1415,
+          rating: 4.3,
+          reviews: 2180,
+          price: "$$",
+          address: "C. 2 de Abril 1003, Centro, Apizaco",
+          hours: "Mié–Lun 12pm–8pm",
+          blurb: "Restaurante clásico de cocina de mar con paredes de ladrillo, cazuelas de mariscos y música en vivo.",
+          pros: [
+            "Porciones generosas y sazón marina tradicional",
+            "Música en vivo los fines de semana",
+            "Espacio amplio con dos plantas",
+          ],
+          cons: [
+            "El volumen de la música en vivo a veces resulta alto para platicar",
+            "Tiempo de espera en platillos complejos",
+          ],
+          image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "el-sinaloense",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJW2uOzgMh0IURwJSvqi5a9Hs",
+          name: "Mariscos El Sinaloense",
+          area: "apizaco",
+          group: "🐟 Mariscos y Cocina de Mar",
+          category: "Mariscos Estilo Pacífico",
+          lat: 19.4125,
+          lng: -98.14,
+          rating: 4.0,
+          reviews: 176,
+          price: "$$",
+          address: "Blvd. Francisco I. Madero 1304-A, San Miguel, Apizaco",
+          hours: "Mar–Dom 11:30am–7pm",
+          blurb: "Mariscos frescos estilo Sinaloa con ceviches en molcajete, aguachiles y coctelería.",
+          pros: [
+            "Especialidades del Pacífico mexicano y aguachiles",
+            "Ambiente relajado para ir el fin de semana",
+            "Variedad de bebidas y cervezas",
+          ],
+          cons: [
+            "Comentarios mixtos sobre la rapidez de atención del personal",
+            "Estacionamiento en la calle algo limitado",
+          ],
+          image: "https://images.unsplash.com/photo-1535400255456-984241443b29?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "marisqueria-galeon",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJ5XEoeE8h0IURVDJgg_C_jRo",
+          name: "Marisquería Galeón",
+          area: "apizaco",
+          group: "🐟 Mariscos y Cocina de Mar",
+          category: "Marisquería Familiar",
+          lat: 19.4155,
+          lng: -98.141,
+          rating: 4.5,
+          reviews: 195,
+          price: "$$",
+          address: "C. 2 de Abril 105, Centro, Apizaco",
+          hours: "Mar–Dom 12pm–7pm",
+          blurb: "Restaurante acogedor enfocado en cocina de mar, camarones enchipotlados y filetes.",
+          pros: [
+            "Decoración temática bonita y ambiente tranquilo",
+            "Atención atenta del personal",
+            "Precios accesibles y justos",
+          ],
+          cons: [
+            "Menú relativamente conciso comparado con grandes marisquerías",
+            "Espacio mediano",
+          ],
+          image: "https://images.unsplash.com/photo-1559742811-822873691df8?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "hola-camaron",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJA8pY570h0IURQ3zKAekhpRg",
+          name: "Hola Camarón",
+          area: "apizaco",
+          group: "🐟 Mariscos y Cocina de Mar",
+          category: "Marisquería & Terraza",
+          lat: 19.409,
+          lng: -98.138,
+          rating: 4.3,
+          reviews: 324,
+          price: "$$",
+          address: "C. Francisco Sarabia 2508, El Carmen, Apizaco",
+          hours: "Jue–Mar 12pm–7:30pm",
+          blurb: "Marisquería con platillos bien servidos, torres de mariscos, terraza y área para eventos.",
+          pros: [
+            "Platillos muy abundantes que se pueden compartir",
+            "Área de terraza al aire libre",
+            "Facilidad de estacionamiento",
+          ],
+          cons: [
+            "Ubicación fuera del centro inmediato de Apizaco",
+            "Suele llenarse bastante en domingos",
+          ],
+          image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "kame-house",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJU-wCQgAh0IURJLwTBsEClUA",
+          name: "Kame House Restaurante Japonés",
+          area: "apizaco",
+          group: "🍱 Sushi y Comida Asiática",
+          category: "Comida Japonesa & Sushi",
+          lat: 19.42,
+          lng: -98.146,
+          rating: 4.5,
+          reviews: 586,
+          price: "$$",
+          address: "Prol. Blvd. la Libertad 303, Fátima, Apizaco",
+          hours: "Mar–Dom 2pm–10pm",
+          blurb: "Restaurante japonés acogedor con rollos de sushi, ramen bien concentrado y excelente servicio.",
+          pros: [
+            "Sabor y frescura del sushi de los mejores en Apizaco",
+            "Ramen muy abundante",
+            "Instalaciones limpias y tranquilas",
+          ],
+          cons: [
+            "Estacionamiento algo limitado en el frente",
+            "Suele requerir reservación en fines de semana",
+          ],
+          image: "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "ikigai",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJbfjw1YUh0IUR4TbUzjHRk2E",
+          name: "Ikigai Apizaco",
+          area: "apizaco",
+          group: "🍱 Sushi y Comida Asiática",
+          category: "Comida Japonesa Casual",
+          lat: 19.4158,
+          lng: -98.1428,
+          rating: 4.7,
+          reviews: 113,
+          price: "$",
+          address: "Blvd Emilio Sanchez Piedras esq. Av. Xicoténcatl, Centro, Apizaco",
+          hours: "Lun–Sáb 1pm–9pm",
+          blurb: "Establecimiento casual de estilo japonés con buena variedad de maki, yakisoba y postres.",
+          pros: [
+            "Opciones de rollos y pastas diferentes e innovadoras",
+            "Precios muy económicos",
+            "Excelente opción para comer algo rápido y rico",
+          ],
+          cons: [
+            "Local de dimensiones pequeñas",
+            "Menú más orientado a comida rápida japonesa",
+          ],
+          image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "shunoko-sushi",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJB3n5CYIh0IURUJhqFAo_RkA",
+          name: "Shunoko sushi apizaco",
+          area: "apizaco",
+          group: "🍱 Sushi y Comida Asiática",
+          category: "Comida Japonesa & Sushi",
+          lat: 19.417,
+          lng: -98.142,
+          rating: 4.5,
+          reviews: 136,
+          price: "$",
+          address: "Blvd. 16 de Septiembre 701, Centro, Apizaco",
+          hours: "Mar–Dom 1:30pm–10pm",
+          blurb: "Restaurante japonés con ambiente acogedor, rollos de sushi especiales, ramen y postres tempura.",
+          pros: [
+            "Ramen con sazón tradicional muy sabroso",
+            "Servicio amable y servicial",
+            "Postres creativos como tempura Oreo",
+          ],
+          cons: [
+            "En horas de comida la preparación puede tomar su tiempo",
+            "Pago con tarjeta a veces sujeto a señal",
+          ],
+          image: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "drunken-fish",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJl71rOxAh0IURbxVbDWm6-MY",
+          name: "Drunken Fish M",
+          area: "apizaco",
+          group: "🍱 Sushi y Comida Asiática",
+          category: "Sushi & Terraza Bar",
+          lat: 19.4165,
+          lng: -98.1408,
+          rating: 4.4,
+          reviews: 301,
+          price: "$",
+          address: "Av Xicohtencatl 411, Centro, Apizaco",
+          hours: "Mié–Dom 2pm–11pm",
+          blurb: "Restaurante de comida japonesa con terraza panorámica sobre la ciudad y coctelería de autor.",
+          pros: [
+            "Terraza con buena vista de la ciudad",
+            "Amplia variedad de rollos especiales y coctelería",
+            "Precios accesibles",
+          ],
+          cons: [
+            "En época de frío la terraza requiere abrigo",
+            "Música a volumen alto por las noches",
+          ],
+          image: "https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "asador-panfilo",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJo6ac-9Uh0IUR3yCP_0yvG3w",
+          name: "El Asador De Pánfilo",
+          area: "apizaco",
+          group: "🥩 Cortes de Carne y Parrilla",
+          category: "Cortes de Carne & Parrilla",
+          lat: 19.4185,
+          lng: -98.1422,
+          rating: 4.6,
+          reviews: 345,
+          price: "$$",
+          address: "Blvd. 16 de Septiembre 1004, Centro, Apizaco",
+          hours: "Mar–Dom 1:30pm–10pm",
+          blurb: "Parrilla tradicional especialista en asado de tira, carne asada y cortes finos de res.",
+          pros: [
+            "Excelente calidad de cortes y términos de cocción",
+            "Atención amable y profesional",
+            "Ideal para cenas formales o de trabajo",
+          ],
+          cons: [
+            "Estacionamiento sobre el bulevar algo escaso",
+            "Poca variedad para comensales vegetarianos",
+          ],
+          image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "las-brasas",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJAZiBc8Ah0IUR_8UjHoQEGq8",
+          name: "Las Brasas",
+          area: "apizaco",
+          group: "🥩 Cortes de Carne y Parrilla",
+          category: "Parrilla & Cortes",
+          lat: 19.414,
+          lng: -98.142,
+          rating: 4.8,
+          reviews: 53,
+          price: "$$",
+          address: "Blvd. 16 de Septiembre 303, Centro, Apizaco",
+          hours: "Lun–Dom 1pm–10pm",
+          blurb: "Restaurante de cortes a las brasas con Top Sirloin, cecina especial y guarniciones abundantes.",
+          pros: [
+            "Puntaje de sazón muy alto (4.8 estrellas)",
+            "Estacionamiento propio disponible",
+            "Ambiente acogedor",
+          ],
+          cons: [
+            "Lugar con cupo de mesas mediano",
+            "Menos conocido que otras cadenas de parrilla",
+          ],
+          image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "casa-angus",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJKztBY40f0IUR7I0eDALQ95c",
+          name: "CASA ANGUS PARRILLA",
+          area: "apizaco",
+          group: "🥩 Cortes de Carne y Parrilla",
+          category: "Steakhouse / Carne Angus",
+          lat: 19.4175,
+          lng: -98.144,
+          rating: 4.6,
+          reviews: 57,
+          price: "$$",
+          address: "Álvaro Obregón s/n, Emilio Sánchez Piedras, Apizaco",
+          hours: "Mié–Lun 2pm–10pm",
+          blurb: "Parrilla especializada en carne Angus orgánica al carbón con marmoleo de alta calidad y salsas artesanas.",
+          pros: [
+            "Carne Angus orgánica con excelente sabor al carbón",
+            "Todas las salsas y guarniciones son hechas en casa",
+            "Atención muy personalizada",
+          ],
+          cons: [
+            "Local sencillo sin grandes lujos de infraestructura",
+            "Menú especializado primordialmente en carne roja",
+          ],
+          image: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "asador-del-patron",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJwW3H7Dsg0IUR9OWsE3Cy7JE",
+          name: "El Asador del Patrón",
+          area: "apizaco",
+          group: "🥩 Cortes de Carne y Parrilla",
+          category: "Costillas & Pollo Asado",
+          lat: 19.411,
+          lng: -98.139,
+          rating: 4.1,
+          reviews: 839,
+          price: "$",
+          address: "Av. Josefa Ortiz de Domínguez 506, San Miguel, Apizaco",
+          hours: "Lun–Dom 12pm–9pm",
+          blurb: "Restaurante casual familiar especializado en costillas BBQ, pollo asado, T-Bone y ensaladas.",
+          pros: [
+            "Precios económicos y porciones rindiendo para familias",
+            "Estacionamiento fácil y gratuito",
+            "Instalaciones amplias",
+          ],
+          cons: [
+            "Servicio estilo casual rápido",
+            "Menú más sencillo sin cortes de alta gama",
+          ],
+          image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "mariquita-mia",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJMXIlUSMg0IURJXbp4h-IHYU",
+          name: "Restaurant Mariquita Mía",
+          area: "apizaco",
+          group: "🍳 Desayunos & Comida Casera Tradicional",
+          category: "Cocina Tradicional Tlaxcalteca",
+          lat: 19.4152,
+          lng: -98.1395,
+          rating: 4.4,
+          reviews: 1279,
+          price: "$$",
+          address: "Av Ignacio Zaragoza 500, Centro, Apizaco",
+          hours: "Mar–Dom 8:30am–6pm",
+          blurb: "Referente de cocina regional desde 1999 rescatando recetas tradicionales tlaxcaltecas, cecina y mixiotes.",
+          pros: [
+            "Porciones muy generosas y sazón casero de tradición",
+            "Atención muy educada del personal",
+            "Excelente opción para desayunos y almuerzos",
+          ],
+          cons: [
+            "En fines de semana el servicio puede volverse pausado por la afluencia",
+            "Estacionarse en la avenida requiere buscar lugar",
+          ],
+          image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "tlaoli-oaxaqueno",
+          mapsUrl: "https://www.google.com/maps/place/?q=place_id:ChIJZf_adOAh0IUR_MxfqxT5XkI",
+          name: "Tlaoli Sazón Oaxaqueño",
+          area: "apizaco",
+          group: "🍳 Desayunos & Comida Casera Tradicional",
+          category: "Cocina Oaxaqueña",
+          lat: 19.4195,
+          lng: -98.1465,
+          rating: 4.7,
+          reviews: 286,
+          price: "$",
+          address: "Prol. Blvd. la Libertad, Fátima, Apizaco",
+          hours: "Jue–Dom 9am–8pm",
+          blurb: "Restaurante acogedor especializado en tlayudas con tasajo, desayunos oaxaqueños y mezcal artesanal.",
+          pros: [
+            "Auténticas tlayudas y productos traídos directamente de Oaxaca",
+            "Excelente mezcal artesanal",
+            "Precios accesibles y ambiente cálido",
+          ],
+          cons: [
+            "Cierra de lunes a miércoles",
+            "Horarios nocturnos limitados excepto en fines de semana",
+          ],
+          image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
       ];
 
       const AREA_LABEL = {
@@ -1550,15 +2114,35 @@
         alrededores: "Alrededores",
       };
 
+      const GROUP_NAMES = [
+        "🌮 Taquerías y Antojitos",
+        "🐟 Mariscos y Cocina de Mar",
+        "🍱 Sushi y Comida Asiática",
+        "🥩 Cortes de Carne y Parrilla",
+        "🍳 Desayunos & Comida Casera Tradicional",
+      ];
+
       // ---- counts on filter buttons ----
+      const mainPlaces = PLACES.filter((p) => !p.group);
       document.getElementById("count-todos").textContent =
-        "(" + PLACES.length + ")";
+        "(" + mainPlaces.length + ")";
       document.getElementById("count-bryanjs").textContent =
-        "(" + PLACES.filter((p) => p.bryanjsChoice).length + ")";
+        "(" + mainPlaces.filter((p) => p.bryanjsChoice).length + ")";
       ["apizaco", "capital", "alrededores"].forEach((a) => {
         document.getElementById("count-" + a).textContent =
-          "(" + PLACES.filter((p) => p.area === a).length + ")";
+          "(" + mainPlaces.filter((p) => p.area === a).length + ")";
       });
+
+      document.getElementById("count-taquerias").textContent =
+        "(" + PLACES.filter((p) => p.group === "🌮 Taquerías y Antojitos").length + ")";
+      document.getElementById("count-mariscos").textContent =
+        "(" + PLACES.filter((p) => p.group === "🐟 Mariscos y Cocina de Mar").length + ")";
+      document.getElementById("count-sushi").textContent =
+        "(" + PLACES.filter((p) => p.group === "🍱 Sushi y Comida Asiática").length + ")";
+      document.getElementById("count-parrilla").textContent =
+        "(" + PLACES.filter((p) => p.group === "🥩 Cortes de Carne y Parrilla").length + ")";
+      document.getElementById("count-desayunos").textContent =
+        "(" + PLACES.filter((p) => p.group === "🍳 Desayunos & Comida Casera Tradicional").length + ")";
 
       // ---- map init ----
       const map = L.map("map", { scrollWheelZoom: false });
@@ -1575,7 +2159,7 @@
       PLACES.forEach((p) => {
         const icon = L.divIcon({
           className:
-            "pin pin-" + p.area + (p.bryanjsChoice ? " pin-bryanjs" : ""),
+            "pin pin-" + p.area + (p.bryanjsChoice ? " pin-bryanjs" : "") + (p.group ? " pin-group" : ""),
           html: '<span class="pin-dot"></span>',
           iconSize: [20, 20],
           iconAnchor: [10, 10],
@@ -1607,12 +2191,18 @@
         markers[p.id] = m;
       });
 
+      function isPlaceVisible(p, filter) {
+        if (GROUP_NAMES.includes(filter)) {
+          return p.group === filter;
+        }
+        if (p.group) return false;
+        if (filter === "todos") return true;
+        if (filter === "bryanjs") return p.bryanjsChoice;
+        return p.area === filter;
+      }
+
       function fitVisible(filter) {
-        const visible = PLACES.filter(
-          (p) =>
-            filter === "todos" ||
-            (filter === "bryanjs" ? p.bryanjsChoice : p.area === filter),
-        );
+        const visible = PLACES.filter((p) => isPlaceVisible(p, filter));
         if (!visible.length) return;
         const bounds = L.latLngBounds(visible.map((p) => [p.lat, p.lng]));
         map.fitBounds(bounds, { padding: [36, 36] });
@@ -1621,9 +2211,7 @@
 
       function updateMarkers(filter) {
         PLACES.forEach((p) => {
-          const show =
-            filter === "todos" ||
-            (filter === "bryanjs" ? p.bryanjsChoice : p.area === filter);
+          const show = isPlaceVisible(p, filter);
           const m = markers[p.id];
           if (show && !map.hasLayer(m)) m.addTo(map);
           if (!show && map.hasLayer(m)) map.removeLayer(m);
@@ -1686,8 +2274,28 @@
       function renderCards(filter) {
         const root = document.getElementById("sections");
         root.innerHTML = "";
+
+        if (GROUP_NAMES.includes(filter)) {
+          const items = PLACES.filter((p) => p.group === filter);
+          if (!items.length) return;
+          const section = document.createElement("section");
+          section.className = "section-block";
+          section.innerHTML = `
+        <div class="section-divider">
+          <svg class="maguey-icon" viewBox="0 0 100 100"><use href="#maguey-symbol"/></svg>
+          <h2>${filter}</h2>
+          <span class="count">${items.length} lugares</span>
+          <span class="rule"></span>
+        </div>
+        <div class="card-grid">${items.map(cardHTML).join("")}</div>
+      `;
+          root.appendChild(section);
+          return;
+        }
+
         ["apizaco", "capital", "alrededores"].forEach((area) => {
           const items = PLACES.filter((p) => {
+            if (p.group) return false;
             if (filter === "bryanjs") return p.area === area && p.bryanjsChoice;
             if (filter !== "todos" && filter !== area) return false;
             return p.area === area;
@@ -1710,14 +2318,14 @@
       renderCards("todos");
 
       // ---- filter interactions ----
-      document.getElementById("filterRow").addEventListener("click", (e) => {
+      document.querySelector(".filters").addEventListener("click", (e) => {
         const btn = e.target.closest(".filter-btn");
         if (!btn) return;
         document
           .querySelectorAll(".filter-btn")
           .forEach((b) => b.classList.remove("active"));
         btn.classList.add("active");
-        const filter = btn.dataset.area;
+        const filter = btn.dataset.group || btn.dataset.area;
         updateMarkers(filter);
         renderCards(filter);
       });
