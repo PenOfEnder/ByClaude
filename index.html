@@ -615,6 +615,79 @@
         color: var(--ink);
       }
 
+      /* ---------- IMAGES & BRYANJS CHOICE ---------- */
+      .card-img-wrap {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        border-radius: calc(var(--radius) - 2px);
+        overflow: hidden;
+        margin-bottom: 6px;
+        background: var(--cream-deep);
+      }
+      .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .card:hover .card-img {
+          transform: scale(1.05);
+        }
+      }
+
+      .card.bryanjs-choice {
+        background: linear-gradient(135deg, #fffef9 0%, #fef8ec 100%);
+        border: 2px solid var(--marigold);
+        box-shadow: 0 10px 25px -10px rgba(217, 147, 46, 0.35);
+        position: relative;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .card.bryanjs-choice:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 18px 35px -12px rgba(217, 147, 46, 0.45);
+        }
+      }
+
+      .bryanjs-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 10;
+        background: linear-gradient(135deg, #d9932e, #b87a20);
+        color: #ffffff;
+        font-family: "Space Mono", monospace;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 6px 12px;
+        border-radius: 999px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        letter-spacing: 0.03em;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      .filter-btn.bryanjs-filter-btn {
+        background: linear-gradient(135deg, #fffcf5, #fef5e4);
+        border-color: #d9932e;
+        color: #b87a20;
+        font-weight: 700;
+      }
+      .filter-btn.bryanjs-filter-btn.active {
+        background: #d9932e;
+        color: #fff;
+        border-color: #b87a20;
+      }
+
+      .pin.pin-bryanjs .pin-dot {
+        box-shadow: 0 0 0 4px #d9932e, 0 2px 8px rgba(0, 0, 0, 0.4);
+        transform: scale(1.25);
+        background: #d9932e;
+      }
+
       /* ---------- FOOTER ---------- */
       footer {
         margin-top: 60px;
@@ -699,14 +772,14 @@
 
     <div class="wrap">
       <header class="hero">
-        <span class="eyebrow">Guía · agosto 2026 · 14 lugares</span>
+        <span class="eyebrow">Guía · agosto 2026 · 19 lugares</span>
         <div class="hero-grid">
           <div>
             <h1>Apizaco &amp; <em>Tlaxcala</em></h1>
             <p class="hero-sub">
-              Un mapa para comer <em>bonito</em>: catorce lugares con carácter
+              Un mapa para comer <em>bonito</em>: diecinueve lugares con carácter
               en Apizaco, la capital y los alrededores — con lo bueno, lo malo,
-              horarios y precio aproximado de cada uno.
+              horarios, precios y la <b>⭐ Selección de Bryanjs</b>.
             </p>
           </div>
           <div class="hero-art">
@@ -723,6 +796,9 @@
         <div class="filter-row" id="filterRow">
           <button class="filter-btn active" data-area="todos">
             <span class="dot"></span>Todos <span id="count-todos"></span>
+          </button>
+          <button class="filter-btn bryanjs-filter-btn" data-area="bryanjs">
+            <span class="dot" style="background:#d9932e;"></span>⭐ Selección de Bryanjs <span id="count-bryanjs"></span>
           </button>
           <button class="filter-btn" data-area="apizaco">
             <span class="dot"></span>Apizaco <span id="count-apizaco"></span>
@@ -747,6 +823,7 @@
               ><i style="background: var(--marigold)"></i>Tlaxcala Capital</span
             >
             <span><i style="background: var(--papel)"></i>Alrededores</span>
+            <span><i style="background: #d9932e; border-radius: 2px;"></i>⭐ Selección de Bryanjs</span>
           </div>
         </div>
         <div
@@ -781,57 +858,147 @@
     <script>
       const PLACES = [
         {
-          id: "abracadabra",
-          mapsUrl:
-            "https://www.google.com/maps/place/?q=place_id:ChIJhWTxWcQh0IUR3kCXUltEyUY",
-          name: "Abracadabra",
-          area: "apizaco",
-          category: "Café temático",
-          lat: 19.4137486,
-          lng: -98.1375043,
-          rating: 5.0,
-          reviews: 30,
-          price: "$$",
-          address: "C. 2 de Abril 804/407, Centro, Apizaco",
-          hours: "Lun–Dom · 12:00 pm–10:00 pm (aprox.)",
-          blurb:
-            "Rincón mágico con temática Harry Potter, Disney y Los Addams — de lo más fotogénico de la zona.",
-          pros: [
-            "Ambiente inmersivo y muy original",
-            "Buen servicio, no es muy caro",
-            "Viral en TikTok por buena razón",
-          ],
-          cons: [
-            "Pocas reseñas todavía (~30)",
-            "Espacio pequeño, puede saturarse rápido",
-          ],
-        },
-        {
           id: "evoka",
           mapsUrl:
             "https://www.google.com/maps/place/?q=place_id:ChIJ3UaNWSAg0IURF7Sr7wz_gRo",
           name: "Evoka Restaurante",
           area: "apizaco",
-          category: "Fine dining",
-          lat: 19.4127778,
-          lng: -98.1358333,
+          category: "Alta cocina tlaxcalteca / Autor",
+          lat: 19.4148,
+          lng: -98.1412,
           rating: 4.6,
           reviews: 307,
-          price: "$$$",
+          price: "$$$$",
           address: "C. 2 de Abril 1022, Centro, Apizaco",
-          hours: "Mar–Sáb 1:30–8/10:00 pm · Dom 1–6 pm · Cerrado lunes",
+          hours: "Cerrado dom y lun · Mar–Sáb 1:30pm–8pm",
           blurb:
-            "El emblema de la cocina tlaxcalteca contemporánea, del chef Francisco Molina.",
+            "Alta cocina de autor por el Chef Francisco Molina, reinterpretando insumos locales en un ambiente acogedor y elegante.",
           pros: [
-            'Menú degustación con maridaje, nivel "de capital"',
-            "Ingredientes locales del Mercado Alternativo de Apizaco",
-            "Buena relación calidad-precio para el nivel",
+            "Reconocido en listas internacionales como 'La Liste'",
+            "Presentación artística e insumos locales de alta calidad",
+            "Excelente ambiente elegante y servicio personalizado",
           ],
           cons: [
-            "Porciones pequeñas para algunos comensales",
-            "Sin estacionamiento propio",
-            "Horario limitado; a veces cerrado aunque Maps diga abierto",
+            "Presupuesto elevado (~$600–$850 MXN por persona)",
+            "Horarios reducidos y requiere reservación previa",
           ],
+          image:
+            "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: true,
+        },
+        {
+          id: "casa-gourmet",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJFU0MOYQh0IURUTPegzKwd9I",
+          name: "Casa Gourmet Apizaco | Desayunos y Cortes",
+          area: "apizaco",
+          category: "Desayunos & Cortes",
+          lat: 19.4182,
+          lng: -98.1398,
+          rating: 4.4,
+          reviews: 98,
+          price: "$$",
+          address: "Av. 5 de Mayo 909, Centro, Apizaco",
+          hours: "Cerrado lunes · Mar–Sáb 8am–6pm · Dom 9am–6pm",
+          blurb:
+            "Casona rústica y acogedora con un hermoso jardín central y fuente, ideal para desayunos gourmet y cortes.",
+          pros: [
+            "Jardín exterior muy amplio e instagrameable con fuente central",
+            "Desayunos gourmet preparados al momento y postres flameados",
+            "Ambiente tranquilo, ideal para citas o reuniones",
+          ],
+          cons: [
+            "Servicio a veces lento cuando hay alta concurrencia",
+            "Cierra relativamente temprano (6:00 pm)",
+          ],
+          image:
+            "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "abracadabra",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJhWTxWcQh0IUR3kCXUltEyUY",
+          name: "Abracadabra",
+          area: "apizaco",
+          category: "Temático & Snacks",
+          lat: 19.4155,
+          lng: -98.1402,
+          rating: 5.0,
+          reviews: 30,
+          price: "$",
+          address: "C. 2 de Abril 804, Centro, Apizaco",
+          hours: "Mar 12pm–10pm · Mié–Sáb 12pm–12am · Dom 12pm–12am",
+          blurb:
+            "Restaurante temático mágico con salones decorados, animatrónicos y proyecciones de películas por sala.",
+          pros: [
+            "Múltiples salas temáticas ideales para fotografías",
+            "Excelente atención del personal (10/10)",
+            "Precios muy accesibles y propuesta original",
+          ],
+          cons: [
+            "Menú enfocado en comida casual/snacks más que alta gastronomía",
+            "Ambiente que puede resultar ruidoso según el horario",
+          ],
+          image:
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "la-maquinita",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJnfLoVwAh0IURHW9S7xUba-8",
+          name: "La Maquinita De Los Sabores",
+          area: "apizaco",
+          category: "Cocina Italiana Artesanal",
+          lat: 19.4162,
+          lng: -98.1385,
+          rating: 4.9,
+          reviews: 93,
+          price: "$$",
+          address: "Av Cuauhtémoc 407-4, Centro, Apizaco",
+          hours:
+            "Cerrado martes · Mié–Jue 1:30pm–9pm · Vie–Sáb 1:30pm–9:30pm · Dom 1:30pm–8pm",
+          blurb:
+            "Restaurante italiano íntimo con horno de piedra, pastas hechas a mano y limoncellos artesanales.",
+          pros: [
+            "Pizzas artesanales al horno de leña/piedra y pasta fresca hecha en casa",
+            "Limoncellos caseros preparados por el chef",
+            "Ambiente íntimo y acogedor para parejas",
+          ],
+          cons: ["Espacio de comedor reducido", "Cierra los días martes"],
+          image:
+            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: true,
+        },
+        {
+          id: "terraza-cafe-cocina",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJRYBy7bEh0IURJUTwHoS7ITU",
+          name: "Terraza, café y cocina.",
+          area: "apizaco",
+          category: "Cafetería & Terraza",
+          lat: 19.417,
+          lng: -98.139,
+          rating: 4.6,
+          reviews: 179,
+          price: "$",
+          address: "Av Cuauhtémoc 207, Centro, Apizaco",
+          hours: "Lun–Dom 9:30am–9pm",
+          blurb:
+            "Terraza café con vista panorámica hacia la basílica, música agradable y bebidas de especialidad.",
+          pros: [
+            "Vista impresionante a la iglesia del centro de Apizaco",
+            "Buena variedad de frappés, tés y cafés",
+            "Precios amigables y ambiente romántico",
+          ],
+          cons: [
+            "El servicio en terraza puede tardar en horas de alta demanda",
+            "Acceso únicamente por escaleras",
+          ],
+          image:
+            "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
         {
           id: "cielito-lindo",
@@ -853,6 +1020,9 @@
             "A veces falta parte del menú",
             "Quejas de demora al pedir factura",
           ],
+          image:
+            "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
         {
           id: "galopolis",
@@ -880,6 +1050,9 @@
             "Cerrado los martes",
             "Aún pocas reseñas, poco conocido",
           ],
+          image:
+            "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: true,
         },
         {
           id: "haze-hush",
@@ -903,6 +1076,9 @@
             "Precios razonables",
           ],
           cons: ["Cerrado los lunes", "Todavía pocas reseñas (~65)"],
+          image:
+            "https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
         {
           id: "intimo",
@@ -928,6 +1104,9 @@
             "Reseña reciente critica el sabor del café",
             "Se llena de grupos grandes en la mañana",
           ],
+          image:
+            "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
         {
           id: "orale-cafe",
@@ -953,6 +1132,98 @@
             "Precios un poco altos para ser café",
             "Alguna reseña dice que la calidad bajó",
           ],
+          image:
+            "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "casa17",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJeyhGDOXZz4UR688hOy3H0-M",
+          name: "Casa 17 Restaurante",
+          area: "capital",
+          category: "Cocina Fusión Tlaxcalteca",
+          lat: 19.3175,
+          lng: -98.2372,
+          rating: 4.7,
+          reviews: 70,
+          price: "$$$",
+          address: "Plaza de la Constitución 17, Centro, Tlaxcala",
+          hours: "Lun–Dom 2pm–10:30pm",
+          blurb:
+            "Santuario culinario que fusiona tradición tlaxcalteca con alta gastronomía frente al zócalo.",
+          pros: [
+            "Ubicación inmejorable frente a la Plaza de la Constitución",
+            "Presentación impecable de platillos y mixología creativa",
+            "Interior sofisticado y elegante",
+          ],
+          cons: [
+            "Requiere reservación previa en fines de semana",
+            "Costo promedio de gama media-alta",
+          ],
+          image:
+            "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: true,
+        },
+        {
+          id: "oliva",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJt80iBrnZz4UR3jk_U8mZ1cc",
+          name: "Oliva Restaurante",
+          area: "capital",
+          category: "Cocina Mediterránea",
+          lat: 19.315,
+          lng: -98.2378,
+          rating: 4.6,
+          reviews: 218,
+          price: "$$$",
+          address: "Pl. Xicohténcatl 7-2, Centro, Tlaxcala",
+          hours:
+            "Lun–Mié 2:30pm–8:30pm · Jue 2:30pm–11:30pm · Vie–Sáb 2:30pm–2am · Dom 1pm–8:30pm",
+          blurb:
+            "Restaurante mediterráneo contemporáneo con coctelería fina y ambiente romántico en Plaza Xicohténcatl.",
+          pros: [
+            "Decoración elegante y atmósfera romántica sofisticada",
+            "Ingredientes premium, tapas deliciosas y gran carta de vinos",
+            "Excelente coctelería y servicio para citas especiales",
+          ],
+          cons: [
+            "Rango de precio más elevado (~$300–$700 MXN por persona)",
+            "Estacionamiento en el centro histórico suele ser complicado",
+          ],
+          image:
+            "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
+        },
+        {
+          id: "tres-reinas",
+          mapsUrl:
+            "https://www.google.com/maps/place/?q=place_id:ChIJEcUpnRLZz4URnqc3cy_96pA",
+          name: "La Terraza de Tres Reinas",
+          area: "capital",
+          category: "Terraza & Brunch",
+          lat: 19.3182,
+          lng: -98.2385,
+          rating: 4.5,
+          reviews: 101,
+          price: "$$",
+          address: "Calle Miguel Lira y Ortega 10, Centro, Tlaxcala",
+          hours:
+            "Cerrado viernes · Sáb 9am–11pm · Dom 9am–2pm · Lun–Jue 9am–9pm",
+          blurb:
+            "Terraza acogedora rodeada de abundante vegetación y plantas con ambiente relajado y tranquilo.",
+          pros: [
+            "Ambiente verde lleno de plantas muy fotogénico",
+            "Lugar muy tranquilo para conversar o tomar un brunch",
+            "Precios razonables y buen mezcal",
+          ],
+          cons: [
+            "Cierra los días viernes",
+            "Área exterior sensible al clima lluvioso",
+          ],
+          image:
+            "https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: true,
         },
         {
           id: "magueyes",
@@ -980,6 +1251,9 @@
             "Se satura por ser muy popular (1,452 reseñas)",
             "Puede haber espera en horas pico",
           ],
+          image:
+            "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
         {
           id: "vinos-piedra",
@@ -1007,31 +1281,9 @@
             'Reseñas dicen que es "más para selfies que para comer bien"',
             "No siempre hay carta de vinos pese al nombre",
           ],
-        },
-        {
-          id: "casa17",
-          mapsUrl:
-            "https://www.google.com/maps/place/?q=place_id:ChIJeyhGDOXZz4UR688hOy3H0-M",
-          name: "Casa 17 Restaurante",
-          area: "capital",
-          category: "Cocina mexicana",
-          lat: 19.3165647,
-          lng: -98.2390219,
-          rating: 4.7,
-          reviews: 70,
-          price: "$$",
-          address: "Plaza de la Constitución 17, Centro, Tlaxcala",
-          hours: "Lun–Dom 2:00–10:30 pm",
-          blurb: "Cocina mexicana refinada justo frente a la plaza principal.",
-          pros: [
-            "Mole verde y pipián muy recomendados",
-            "Ambiente elegante",
-            "Salsa de molcajete preparada en mesa",
-          ],
-          cons: [
-            "Servicio lento si hay poco personal (hasta 45 min de espera)",
-            "A veces desbalance entre relleno y mole",
-          ],
+          image:
+            "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
         {
           id: "vintage-coffee",
@@ -1057,6 +1309,9 @@
           cons: [
             'Comida "no es la mejor" según alguna reseña (el ambiente compensa)',
           ],
+          image:
+            "https://images.unsplash.com/photo-1485808191679-5f86510681a2?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
         {
           id: "caballerizas",
@@ -1082,6 +1337,9 @@
             "Varias reseñas recientes de servicio muy lento (hasta 2h de espera)",
             "Falta de organización mencionada seguido",
           ],
+          image:
+            "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: true,
         },
         {
           id: "7puertas",
@@ -1109,6 +1367,9 @@
             "Solo abre 3 días a la semana",
             "Muy ventilado, lleva abrigo si hace frío",
           ],
+          image:
+            "https://images.unsplash.com/photo-1534080564583-6be75777b70a?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
         {
           id: "tikytos",
@@ -1135,6 +1396,9 @@
             "Precios subiendo un poco (mencionado en reseñas)",
             "Solo abre jueves a domingo",
           ],
+          image:
+            "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80",
+          bryanjsChoice: false,
         },
       ];
 
@@ -1147,6 +1411,8 @@
       // ---- counts on filter buttons ----
       document.getElementById("count-todos").textContent =
         "(" + PLACES.length + ")";
+      document.getElementById("count-bryanjs").textContent =
+        "(" + PLACES.filter((p) => p.bryanjsChoice).length + ")";
       ["apizaco", "capital", "alrededores"].forEach((a) => {
         document.getElementById("count-" + a).textContent =
           "(" + PLACES.filter((p) => p.area === a).length + ")";
@@ -1166,7 +1432,8 @@
       const markers = {};
       PLACES.forEach((p) => {
         const icon = L.divIcon({
-          className: "pin pin-" + p.area,
+          className:
+            "pin pin-" + p.area + (p.bryanjsChoice ? " pin-bryanjs" : ""),
           html: '<span class="pin-dot"></span>',
           iconSize: [20, 20],
           iconAnchor: [10, 10],
@@ -1174,7 +1441,13 @@
         });
         const m = L.marker([p.lat, p.lng], { icon }).addTo(map);
         m.bindPopup(
-          '<p class="popup-name">' +
+          (p.image
+            ? `<img src="${p.image}" alt="${p.name}" style="width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:8px;" />`
+            : "") +
+            (p.bryanjsChoice
+              ? '<div style="color:#b87a20;font-weight:700;font-size:11.5px;margin-bottom:5px;">⭐ Selección de Bryanjs</div>'
+              : "") +
+            '<p class="popup-name">' +
             p.name +
             "</p>" +
             '<p class="popup-blurb">' +
@@ -1186,14 +1459,17 @@
             p.reviews +
             " reseñas · " +
             p.price +
-            "</p>",
+            "</p>" +
+            `<p style="margin-top:8px;margin-bottom:0;"><a href="${p.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`}" target="_blank" rel="noopener" style="color:#d9932e;font-weight:700;text-decoration:none;font-size:12px;">Abrir en Google Maps ↗</a></p>`,
         );
         markers[p.id] = m;
       });
 
       function fitVisible(filter) {
         const visible = PLACES.filter(
-          (p) => filter === "todos" || p.area === filter,
+          (p) =>
+            filter === "todos" ||
+            (filter === "bryanjs" ? p.bryanjsChoice : p.area === filter),
         );
         if (!visible.length) return;
         const bounds = L.latLngBounds(visible.map((p) => [p.lat, p.lng]));
@@ -1203,7 +1479,9 @@
 
       function updateMarkers(filter) {
         PLACES.forEach((p) => {
-          const show = filter === "todos" || p.area === filter;
+          const show =
+            filter === "todos" ||
+            (filter === "bryanjs" ? p.bryanjsChoice : p.area === filter);
           const m = markers[p.id];
           if (show && !map.hasLayer(m)) m.addTo(map);
           if (!show && map.hasLayer(m)) map.removeLayer(m);
@@ -1224,8 +1502,16 @@
 
       // ---- cards ----
       function cardHTML(p) {
+        const isBryan = p.bryanjsChoice ? "bryanjs-choice" : "";
+        const badgeHTML = p.bryanjsChoice
+          ? `<div class="bryanjs-badge" title="Destacado en la selección especial">⭐ Selección de Bryanjs</div>`
+          : "";
         return `
-    <article class="card">
+    <article class="card ${isBryan}">
+      <div class="card-img-wrap">
+        ${badgeHTML}
+        <img src="${p.image}" alt="${p.name}" class="card-img" loading="lazy" />
+      </div>
       <div class="card-top">
         <div>
           <h3 class="card-name">${p.name}</h3>
@@ -1259,15 +1545,18 @@
         const root = document.getElementById("sections");
         root.innerHTML = "";
         ["apizaco", "capital", "alrededores"].forEach((area) => {
-          if (filter !== "todos" && filter !== area) return;
-          const items = PLACES.filter((p) => p.area === area);
+          const items = PLACES.filter((p) => {
+            if (filter === "bryanjs") return p.area === area && p.bryanjsChoice;
+            if (filter !== "todos" && filter !== area) return false;
+            return p.area === area;
+          });
           if (!items.length) return;
           const section = document.createElement("section");
           section.className = "section-block";
           section.innerHTML = `
         <div class="section-divider">
           <svg class="maguey-icon" viewBox="0 0 100 100"><use href="#maguey-symbol"/></svg>
-          <h2>${AREA_LABEL[area]}</h2>
+          <h2>${filter === "bryanjs" ? AREA_LABEL[area] + " — ⭐ Selección de Bryanjs" : AREA_LABEL[area]}</h2>
           <span class="count">${items.length} lugares</span>
           <span class="rule"></span>
         </div>
